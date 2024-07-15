@@ -9,6 +9,8 @@ import { ReactiveVar } from 'meteor/reactive-var';
 let _conf = {};
 
 const _defaults = {
+    allowedIfTaskNotFound: true,
+    warnIfTaskNotFound: true,
     verbosity: Permissions.C.Verbose.CONFIGURE
 };
 

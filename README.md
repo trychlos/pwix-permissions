@@ -135,6 +135,10 @@ The package's behavior can be configured through a call to the `Permissions.conf
 
 Known configuration options are:
 
+- `allowedIfTaskNotFound`
+
+    How to answer to an allowed request if the task is not found in our referentiel, defaulting to `true`.
+
 - `verbosity`
 
     The verbosity level as:
@@ -156,6 +160,10 @@ Known configuration options are:
         Trace not allowed results
 
     Defaults to `Permissions.C.Verbose.CONFIGURE`.
+
+- `warnIfTaskNotFound`
+
+    Whether to emit a console warning if the task is not found in our referentiel, defaulting to `true`.
 
 Remind too that Meteor packages are instanciated at application level. They are so only configurable once, or, in other words, only one instance has to be or can be configured. Addtionnal calls to `Permissions.configure()` will just override the previous one. You have been warned: **only the application should configure a package**.
 
