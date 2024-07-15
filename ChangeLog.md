@@ -6,7 +6,7 @@
 
     Release date: 
 
-    - 
+    - Let the application configure allowed and not allowed results logs on the console
 
 ### 1.0.0
 

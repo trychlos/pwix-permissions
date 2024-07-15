@@ -85,6 +85,12 @@ An async function which returns `true` if the `userId` is allowed to execute the
 
 Feeds the task referentiel with a task and its allow function, or with a list of tasks and their allowed functions.
 
+The prototype of allow functions is:
+
+```js
+    async allowFunction( userId<String|Object>, ... ): <Boolean>
+```
+
 All calls to `Permissions.set()` are cumulative.
 
 ## Task naming and tasks namespace
@@ -140,6 +146,14 @@ Known configuration options are:
     - `Permissions.C.Verbose.CONFIGURE`
 
         Trace configuration operations
+
+    - `Permissions.C.Verbose.ALLOWED`
+
+        Trace allowed results
+
+    - `Permissions.C.Verbose.NOT_ALLOWED`
+
+        Trace not allowed results
 
     Defaults to `Permissions.C.Verbose.CONFIGURE`.
 

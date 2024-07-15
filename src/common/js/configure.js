@@ -25,7 +25,6 @@ Permissions.configure = function( o ){
         Permissions._conf.set( _conf );
         // be verbose if asked for
         if( Permissions._conf.verbosity & Permissions.C.Verbose.CONFIGURE ){
-            //console.log( 'pwix:permissions configure() with', o, 'building', Permissions._conf );
             console.log( 'pwix:permissions configure() with', o );
         }
     }
