@@ -8,6 +8,7 @@
 
     - Let the application configure allowed and not allowed results logs on the console
     - Define allowedIfTaskNotFound and warnIfTaskNotFound configuration parameters
+    - Implement set() and isAllowed() functions
 
 ### 1.0.0
 

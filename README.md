@@ -79,6 +79,8 @@ See [below](#configuration)
 
 An async function which returns `true` if the `userId` is allowed to execute the given `task`.
 
+When not provided, the `userId` defaults to current logged-in user on the client side. No default is provided on the server side.
+
 ##### `Permissions.set( task, async fn<Function> )`
 
 ##### `Permissions.set( o<Object> )`
