@@ -50,14 +50,15 @@ Permissions.set = function( defs ){
  */
 Permissions.isAllowed = async function( task, userId=null ){
     let allowed = true;
-    if( Meteor.isClient && !user ){
-        user = Meteor.userId();
+    if( Meteor.isClient && !userId ){
+        userId = Meteor.userId();
     }
     const allowFn = Permissions._getAllowFn( task );
     if( allowFn ){
         let args = [ ...arguments ];
-        args.shift();
-        allowed = await allowFn( ...args );
+        args.shift(); // remove task
+        args.shift(); // remove userId which may have been modified
+        allowed = await allowFn( userId, ...args );
     } else {
         allowed = Permissions.configure().allowedIfTaskNotFound;
         if( Permissions.configure().warnIfTaskNotFound ){
