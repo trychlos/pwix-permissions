@@ -53,6 +53,7 @@ Permissions.isAllowed = async function( task, userId=null ){
     if( Meteor.isClient && !userId ){
         userId = Meteor.userId();
     }
+    userId = userId ? userId._id || userId : userId;
     const allowFn = Permissions._getAllowFn( task );
     if( allowFn ){
         let args = [ ...arguments ];
