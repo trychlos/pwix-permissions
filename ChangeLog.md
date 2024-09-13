@@ -2,9 +2,9 @@
 
 ## ChangeLog
 
-### 1.0.1-rc
+### 1.0.1
 
-    Release date: 
+    Release date: 2024- 9-13
 
     - Let the application configure allowed and not allowed results logs on the console
     - Define allowedIfTaskNotFound and warnIfTaskNotFound configuration parameters
@@ -18,4 +18,4 @@
 
 ---
 P. Wieser
-- Last updated on 2024, Jul. 15th
+- Last updated on 2024, Sep. 13th
