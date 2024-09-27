@@ -67,6 +67,7 @@ Then the compatible callers just have to do:
 ## What does it provide ?
 
 ### `Permissions`
+
 The globally exported object.
 
 #### Functions
@@ -75,11 +76,15 @@ The globally exported object.
 
 See [below](#configuration)
 
-##### `Permissions.isAllowed( task, userId )`
+##### `Permissions.isAllowed( task, userId, ... )`
 
 An async function which returns `true` if the `userId` is allowed to execute the given `task`.
 
 When not provided, the `userId` defaults to current logged-in user on the client side. No default is provided on the server side.
+
+All arguments are transmitted to the final function.
+
+Hint: pass your additional arguments as a single object.
 
 ##### `Permissions.set( task, async fn<Function> )`
 
