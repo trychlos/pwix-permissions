@@ -23,7 +23,7 @@ const _defaults = {
  */
 Permissions.configure = function( o ){
     if( o && _.isObject( o )){
-        _.merge( _conf, _defaults, o );
+        _conf = _.merge( _defaults, _conf, o );
         Permissions._conf.set( _conf );
         // be verbose if asked for
         if( Permissions._conf.verbosity & Permissions.C.Verbose.CONFIGURE ){
@@ -34,5 +34,5 @@ Permissions.configure = function( o ){
     return Permissions._conf.get();
 };
 
-_.merge( _conf, Permissions._defaults );
+_conf = _.merge( {}, Permissions._defaults );
 Permissions._conf = new ReactiveVar( _conf );

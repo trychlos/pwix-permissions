@@ -7,6 +7,7 @@
     Release date: 
 
     - Add a hint in README
+    - Fix configuration overrides
 
 ### 1.0.1
 
