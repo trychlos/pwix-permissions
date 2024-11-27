@@ -8,7 +8,7 @@ A Meteor package which provides the thinnest Javascript permissions manager.
 
 An application, or at least the applications I use to write, typically use the `alanning:roles` roles, which I find practical to extend in `pwix:roles` package.
 
-But a bunch of permissions are actually involved into applications which would be a minimal itself involved in security management: permission to run such or sunch method on such or such object, permission to subscribe to a publication with such and sunch arguments, and so on.
+But a bunch of permissions are actually involved into applications: these are the permissions to run such or such method on such or such object, permission to subscribe to a publication with such and such arguments, and so on.
 
 This may be rather complex, and, even if you are using roles in your application, you may not always want use these roles to manages which can be called technical permissions.
 
@@ -86,7 +86,7 @@ All arguments are transmitted to the final function.
 
 Hint: pass your additional arguments as a single object.
 
-##### `Permissions.set( task, async fn<Function> )`
+##### `Permissions.set( task<String>, async fn<Function> )`
 
 ##### `Permissions.set( o<Object> )`
 

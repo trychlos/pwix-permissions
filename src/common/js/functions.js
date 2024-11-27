@@ -48,17 +48,17 @@ Permissions.set = function( defs ){
  * @param {Object|String} user either a user identifier or a user document, mandatory server side, defaulting client side to current user
  * @returns {Boolean} whether the user is allowed to do that
  */
-Permissions.isAllowed = async function( task, userId=null ){
+Permissions.isAllowed = async function( task, user=null ){
     let allowed = true;
-    if( Meteor.isClient && !userId ){
-        userId = Meteor.userId();
+    if( Meteor.isClient && !user ){
+        user = Meteor.userId();
     }
-    userId = userId ? userId._id || userId : userId;
+    const userId = user ? user._id || user : user;
     const allowFn = Permissions._getAllowFn( task );
     if( allowFn ){
         let args = [ ...arguments ];
         args.shift(); // remove task
-        args.shift(); // remove userId which may have been modified
+        args.shift(); // remove user which may have been modified anyway
         allowed = await allowFn( userId, ...args );
     } else {
         allowed = Permissions.configure().allowedIfTaskNotFound;

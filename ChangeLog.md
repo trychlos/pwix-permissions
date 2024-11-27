@@ -6,7 +6,7 @@
 
     Release date: 
 
-    - 
+    - Fix documentation
 
 ### 1.0.2
 
