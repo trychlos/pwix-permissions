@@ -2,9 +2,9 @@
 
 ## ChangeLog
 
-### 1.0.3-rc
+### 1.0.3
 
-    Release date: 
+    Release date: 2026- 2-10
 
     - Fix documentation
 
@@ -31,4 +31,4 @@
 
 ---
 P. Wieser
-- Last updated on 2024, Oct. 4th
+- Last updated on 2026, Feb. 10th
