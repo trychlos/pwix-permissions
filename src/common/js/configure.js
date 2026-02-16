@@ -7,8 +7,9 @@ import _ from 'lodash';
 import { ReactiveVar } from 'meteor/reactive-var';
 
 let _conf = {};
+Permissions._conf = new ReactiveVar( _conf );
 
-const _defaults = {
+Permissions._defaults = {
     allowedIfTaskNotFound: true,
     warnIfTaskNotFound: true,
     verbosity: Permissions.C.Verbose.CONFIGURE
@@ -23,11 +24,22 @@ const _defaults = {
  */
 Permissions.configure = function( o ){
     if( o && _.isObject( o )){
-        _conf = _.merge( _defaults, _conf, o );
-        Permissions._conf.set( _conf );
-        // be verbose if asked for
-        if( Permissions._conf.verbosity & Permissions.C.Verbose.CONFIGURE ){
-            console.log( 'pwix:permissions configure() with', o );
+        // check that keys exist
+        let built_conf = {};
+        Object.keys( o ).forEach(( it ) => {
+            if( Object.keys( Permissions._defaults ).includes( it )){
+                built_conf[it] = o[it];
+            } else {
+                console.warn( 'pwix:permissions configure() ignore unmanaged key \''+it+'\'' );
+            }
+        });
+        if( Object.keys( built_conf ).length ){
+            _conf = _.merge( Permissions._defaults, _conf, built_conf );
+            Permissions._conf.set( _conf );
+            // be verbose if asked for
+            if( _conf.verbosity & Permissions.C.Verbose.CONFIGURE ){
+                console.log( 'pwix:permissions configure() with', built_conf );
+            }
         }
     }
     // also acts as a getter
@@ -35,4 +47,4 @@ Permissions.configure = function( o ){
 };
 
 _conf = _.merge( {}, Permissions._defaults );
-Permissions._conf = new ReactiveVar( _conf );
+Permissions._conf.set( _conf );
