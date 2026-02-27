@@ -4,6 +4,10 @@
 
 import _ from 'lodash';
 
+import { Logger } from 'meteor/pwix:logger';
+
+const logger = Logger.get();
+
 Permissions._tasks = {};
 
 Permissions._getAllowFn = function( task ){
@@ -18,7 +22,7 @@ Permissions._getAllowFn = function( task ){
             } else if( _.isObject( taskobj[it] )){
                 taskobj = taskobj[it];
             } else {
-                console.error( 'unmanaged task definition while expecting a function or an object', taskobj[it] );
+                logger.error( 'getAllowfn() unmanaged task definition while expecting a function or an object', taskobj[it] );
             }
         }
         return allowFn === null;
@@ -39,7 +43,7 @@ Permissions.set = function( defs ){
         const allowFn = arguments[1];
         Permissions._tasks[task] = allowFn;
     } else {
-        console.error( 'Permissions.set() expects an object or a ( task<String>, allowfn<async Function> ) arguments list' );
+        logger.error( 'set() expects an object or a ( task<String>, allowfn<async Function> ) arguments list' );
     }
 };
 
@@ -63,14 +67,14 @@ Permissions.isAllowed = async function( task, user=null ){
     } else {
         allowed = Permissions.configure().allowedIfTaskNotFound;
         if( Permissions.configure().warnIfTaskNotFound ){
-            console.warn( 'pwix:permissions', 'task not found:', task );
+            logger.warn( 'isAllowed() task not found:', task );
         }
     }
-    if( allowed && ( Permissions.configure().verbosity & Permissions.C.Verbose.ALLOWED )){
-        console.log( 'pwix:permissions', 'task='+task, 'userId='+userId, 'allowed='+allowed );
+    if( allowed ){
+        logger.verbose({ verbosity: Permissions.configure().verbosity, against: Permissions.C.Verbose.ALLOWED }, 'task='+task, 'userId='+userId, 'allowed='+allowed );
     }
-    if( !allowed && ( Permissions.configure().verbosity & Permissions.C.Verbose.NOT_ALLOWED )){
-        console.log( 'pwix:permissions', 'task='+task, 'userId='+userId, 'allowed='+allowed );
+    if( !allowed ){
+        logger.verbose({ verbosity: Permissions.configure().verbosity, against: Permissions.C.Verbose.NOT_ALLOWED }, 'task='+task, 'userId='+userId, 'allowed='+allowed );
     }
     return allowed;
 };

@@ -1,6 +1,6 @@
 Package.describe({
     name: 'pwix:permissions',
-    version: '1.0.4-rc.0',
+    version: '1.1.0-rc.0',
     summary: 'The thinnest Javascript permissions manager as a Meteor package',
     git: 'https://github.com/trychlos/pwix-permissions',
     documentation: 'README.md'
@@ -25,6 +25,7 @@ Package.onTest( function( api ){
 function configure( api ){
     api.versionsFrom([ '2.9.0', '3.0-rc.0' ]);
     api.use( 'ecmascript' );
+    api.use( 'pwix:logger@1.0.0-rc' );
     api.use( 'tmeasday:check-npm-versions@1.0.2 || 2.0.0-beta.0', 'server' );
 }
 

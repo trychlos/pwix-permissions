@@ -2,11 +2,12 @@
 
 ## ChangeLog
 
-### 1.0.4-rc.0
+### 1.1.0-rc.0
 
     Release date: 
 
     - configure() now warns for unmanaged keys
+    - Use pwix:logger universal logger, thus bumping minor candidate version number
 
 ### 1.0.3
 
