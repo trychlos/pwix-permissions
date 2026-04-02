@@ -1,6 +1,6 @@
 Package.describe({
     name: 'pwix:permissions',
-    version: '1.1.0-rc.0',
+    version: '1.1.0',
     summary: 'The thinnest Javascript permissions manager as a Meteor package',
     git: 'https://github.com/trychlos/pwix-permissions',
     documentation: 'README.md'
